@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char* argv[])
+{ 
+    // Naive Error check
+    if (argc != 3) {
+        fprintf(stderr, "Two parameters an int and a char.\n");
+        exit(-1);
+    }
+    
+    // Get the size of the diamond
+    int num = atoi(argv[1]);
+    
+    if (num < 1 || num > 15) {
+        fprintf(stderr, "Then number must be between 1 and 15");
+    }
+    
+    char *k;
+    // Set the character k
+    k = argv[2];
+    
+    /** TODO: Fill in here **/
+    int heightAndWidth = (2*num) - 1;
+    
+    for (int i = 0; i < heightAndWidth / 2; ++i)
+    {
+        for (int j = 1; j < num - i; ++j)		// Print the spaces so that the edge of the diamond follows the proper structure****
+	{
+	    printf("%c", ' ');
+	}
+	
+	int charPrinter = i + 1;
+	for (int l = 0; l < i + 1; ++l)
+	{
+	    printf("%c", *k);
+	} 
+	
+	for (int j = num - i; j >= 0; ++j)         // Print the spaces in the same fashion as the first part to create symmetry
+        {
+            printf("%c", ' ');
+        }
+	
+	printf("\n"); 
+    }
+
+    for (int i = 0; i < heightAndWidth; ++i)
+    {
+	printf("%c", *k);
+    }
+
+    printf("\n");
+
+    for (int i = 0; i < heightAndWidth / 2; ++i)
+    {
+        for (int j = 0; j < num - i; ++j)         // Print the spaces so that the edge of the diamond follows the proper structure****
+        {
+            printf("%c", ' ');
+        }
+
+        int charPrinter = i + 1;
+        for (int l = 0; l < i + 1; ++l)
+        {
+            printf("%c", *k);
+        }
+
+        for (int j = 0; j < num - i; ++j)         // Print the spaces in the same fashion as the first part to create symmetry
+        {
+            printf("%c", ' ');
+        }
+
+	printf("\n");
+    }
+
+    return 0;
+}
